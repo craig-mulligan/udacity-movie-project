@@ -1,0 +1,213 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+
+        img {
+          width: auto;
+        }
+
+        .new-badge {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: red;
+          padding: 10px;
+          color: #fff;
+        }
+
+        #new_filter {
+          display: inline-block;
+          vertical-align: middle;
+          margin-top: 14px;
+          background: none;
+          color: #fff;
+          border: none;
+        }
+        #new_filter.active {
+          color: black;
+          background:#fff;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+          // hides old releases when clicking on the new release filter
+          $('#new_filter').on( "click", function() {
+            if ($(this).hasClass('active')) {
+              $(".false").show();
+              $(this).removeClass('active');
+            } else {
+              $(".false").hide();
+              $(this).addClass('active');
+            }
+          });
+            
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Craig's Movie Trailers</a>
+          </div>
+          <button id='new_filter'>New</button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center false" data-trailer-youtube-id="4KPTXpQehio" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.rotoscopers.com/wp-content/uploads/2013/10/Toy-Story-Poster.jpg" width="220" height="342">
+    <h2>Toy Story</h2>
+    <h2></h2>
+    <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" style="width: 83%">
+      83/100 rating
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center false" data-trailer-youtube-id="uA8SG4Yea7s" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.writingfordesigners.com/wp-content/uploads/2014/09/Avatar-Poster-blue-people.jpg" width="220" height="342">
+    <h2>avatar</h2>
+    <h2></h2>
+    <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100" style="width: 79%">
+      79/100 rating
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center true" data-trailer-youtube-id="uJfLoE6hanc" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.impawards.com/2014/thumbs/sq_birdman.jpg" width="220" height="342">
+    <h2>Birdman</h2>
+    <h2><div class='new-badge'>New!</div></h2>
+    <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%">
+      82/100 rating
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center false" data-trailer-youtube-id="kuSTr48P9mc" data-toggle="modal" data-target="#trailer">
+    <img src="https://www.movieposter.com/posters/archive/main/110/MPW-55462" width="220" height="342">
+    <h2>Slumdog Millionaire</h2>
+    <h2></h2>
+    <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+      80/100 rating
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center false" data-trailer-youtube-id="501Afs54cso" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.impawards.com/1969/posters/butch_cassidy_and_the_sundance_kid.jpg" width="220" height="342">
+    <h2>Butch Cassidy and the Sundance Kid</h2>
+    <h2></h2>
+    <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%">
+      82/100 rating
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center false" data-trailer-youtube-id="z5-yA66kaVc" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.impawards.com/2014/thumbs/sq_saving_christmas.jpg" width="220" height="342">
+    <h2>Saving Christmas</h2>
+    <h2></h2>
+    <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%">
+      15/100 rating
+    </div>
+  </div>
+</div>
+
+    </div>
+  </body>
+</html>
