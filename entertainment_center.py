@@ -18,5 +18,5 @@ saving_christmas = media.Movie("Saving Christmas",	"Kirk is enjoying the annual 
 # Create a dict of the movies 
 movies = [toy_story, avatar, bird_man, slumdog_millionare, butch_cassidy_and_the_sundance_kid, saving_christmas]
 
-# pass dict of movies to the generator
+# pass list of movies to the generator
 movie_generator.open_movies_page(movies)
