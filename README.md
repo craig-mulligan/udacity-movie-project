@@ -6,5 +6,4 @@ cd in to the directory and then run
 
 ```
 $ python entertainment_center.py
-
 ```
